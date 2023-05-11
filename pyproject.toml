@@ -1,3 +1,7 @@
 [build-system]
 requires = ["setuptools", "wheel", "oldest-supported-numpy", "packaging"]
 build-backend = "setuptools.build_meta"
+
+[tool.ruff]
+# Only select pyflakes logical errors ("F") to start with
+select = ["F"]
