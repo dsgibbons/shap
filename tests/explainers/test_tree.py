@@ -8,7 +8,7 @@ import pandas as pd
 import pytest
 import sklearn
 import sklearn.pipeline
-from sklearn.experimental import enable_hist_gradient_boosting  # pylint: disable=unused-import
+from sklearn.experimental import enable_hist_gradient_boosting  # noqa: F401
 import shap
 
 
