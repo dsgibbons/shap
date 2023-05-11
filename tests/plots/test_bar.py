@@ -4,8 +4,6 @@ import matplotlib.pyplot as plt
 import pytest
 import shap
 
-from .utils import explainer # noqa: F401  (pytest fixture do not remove)
-
 
 @pytest.mark.mpl_image_compare
 def test_simple_bar(explainer): # pylint: disable=redefined-outer-name

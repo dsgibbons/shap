@@ -2,7 +2,6 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pytest
 import shap
-from .utils import explainer # (pytest fixture do not remove) noqa: F401
 
 
 @pytest.mark.mpl_image_compare
