@@ -134,7 +134,7 @@ def heatmap(shap_values, instance_order=Explanation.hclust(), feature_values=Exp
         import matplotlib.cm as cm
         m = cm.ScalarMappable(cmap=cmap)
         m.set_array([min(vmin,-vmax), max(-vmin,vmax)])
-        cb = pl.colorbar(m, ticks=[min(vmin,-vmax), max(-vmin,vmax)], aspect=1000, fraction=0.01, pad=0.10)
+        cb = pl.colorbar(m, ticks=[min(vmin,-vmax), max(-vmin,vmax)], aspect=1000, fraction=0.02, pad=0.10)
         cb.set_label("SHAP value", size=12, labelpad=-10)
         cb.ax.tick_params(labelsize=11, length=0)
         cb.set_alpha(1)
