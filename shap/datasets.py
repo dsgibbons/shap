@@ -314,8 +314,7 @@ def cache(url, file_name=None):
     if file_name is None:
         file_name = os.path.basename(url)
     data_dir = os.path.join(os.path.dirname(__file__), "cached_data")
-    if not os.path.isdir(data_dir):
-        os.mkdir(data_dir)
+    os.makedirs(data_dir, exist_ok=True)
 
     file_path = os.path.join(data_dir, file_name)
     if not os.path.isfile(file_path):
