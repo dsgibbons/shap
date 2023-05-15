@@ -26,39 +26,39 @@ def test_exact_second_order():
 
     assert np.allclose(right_answer, shap_values.values)
 
-def test_tabular_single_output_auto_masker():
-    model, data = common.basic_xgboost_scenario(100)
+def test_tabular_single_output_auto_masker(basic_xgboost_scenario):
+    model, data = basic_xgboost_scenario
     common.test_additivity(shap.explainers.Permutation, model.predict, data, data)
 
-def test_tabular_multi_output_auto_masker():
-    model, data = common.basic_xgboost_scenario(100)
+def test_tabular_multi_output_auto_masker(basic_xgboost_scenario):
+    model, data = basic_xgboost_scenario
     common.test_additivity(shap.explainers.Permutation, model.predict_proba, data, data)
 
-def test_tabular_single_output_partition_masker():
-    model, data = common.basic_xgboost_scenario(100)
+def test_tabular_single_output_partition_masker(basic_xgboost_scenario):
+    model, data = basic_xgboost_scenario
     common.test_additivity(shap.explainers.Permutation, model.predict, shap.maskers.Partition(data), data)
 
-def test_tabular_multi_output_partition_masker():
-    model, data = common.basic_xgboost_scenario(100)
+def test_tabular_multi_output_partition_masker(basic_xgboost_scenario):
+    model, data = basic_xgboost_scenario
     common.test_additivity(shap.explainers.Permutation, model.predict_proba, shap.maskers.Partition(data), data)
 
-def test_tabular_single_output_independent_masker():
-    model, data = common.basic_xgboost_scenario(100)
+def test_tabular_single_output_independent_masker(basic_xgboost_scenario):
+    model, data = basic_xgboost_scenario
     common.test_additivity(shap.explainers.Permutation, model.predict, shap.maskers.Independent(data), data)
 
-def test_tabular_multi_output_independent_masker():
-    model, data = common.basic_xgboost_scenario(100)
+def test_tabular_multi_output_independent_masker(basic_xgboost_scenario):
+    model, data = basic_xgboost_scenario
     common.test_additivity(shap.explainers.Permutation, model.predict_proba, shap.maskers.Independent(data), data)
 
-def test_serialization():
-    model, data = common.basic_xgboost_scenario()
+def test_serialization(basic_xgboost_scenario):
+    model, data = basic_xgboost_scenario
     common.test_serialization(
         shap.explainers.Permutation, model.predict, data, data,
         rtol=0.1, atol=0.05, max_evals=100000
     )
 
-def test_serialization_no_model_or_masker():
-    model, data = common.basic_xgboost_scenario()
+def test_serialization_no_model_or_masker(basic_xgboost_scenario):
+    model, data = basic_xgboost_scenario
     common.test_serialization(
         shap.explainers.Permutation, model.predict, data, data,
         model_saver=False, masker_saver=False,
@@ -66,8 +66,8 @@ def test_serialization_no_model_or_masker():
         rtol=0.1, atol=0.05, max_evals=100000
     )
 
-def test_serialization_custom_model_save():
-    model, data = common.basic_xgboost_scenario()
+def test_serialization_custom_model_save(basic_xgboost_scenario):
+    model, data = basic_xgboost_scenario
     common.test_serialization(
         shap.explainers.Permutation, model.predict, data, data,
         model_saver=pickle.dump, model_loader=pickle.load, rtol=0.1, atol=0.05, max_evals=100000
