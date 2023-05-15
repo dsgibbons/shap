@@ -149,7 +149,7 @@ def run_setup(with_binary, test_xgboost, test_lightgbm, test_catboost, test_spar
         except Exception as e:
             raise Exception("Error building cuda module: " + repr(e)) from e
 
-    tests_require = ['pytest', 'pytest-mpl', 'pytest-cov']
+    tests_require = ['pytest', 'pytest-mpl', 'pytest-cov', 'pytest-xdist']
     if test_xgboost:
         tests_require += ['xgboost']
     if test_lightgbm:
