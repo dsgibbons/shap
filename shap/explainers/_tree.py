@@ -1366,7 +1366,7 @@ class SingleTree:
 
         # Re-compute the number of samples that pass through each node if we are given data
         if data is not None and data_missing is not None:
-            self.node_sample_weight[:] = 0.0
+            self.node_sample_weight.fill(0.0)
             _cext.dense_tree_update_weights(
                 self.children_left, self.children_right, self.children_default, self.features,
                 self.thresholds, self.values, 1, self.node_sample_weight, data, data_missing
@@ -1507,7 +1507,7 @@ class XGBTreeModelLoader(object):
 
             # load the stat nodes
             self.loss_chg.append(np.zeros(self.num_nodes[i], dtype=np.float32))
-            self.sum_hess.append(np.zeros(self.num_nodes[i], dtype=np.float32))
+            self.sum_hess.append(np.zeros(self.num_nodes[i], dtype=np.float64))
             self.base_weight.append(np.zeros(self.num_nodes[i], dtype=np.float32))
             self.leaf_child_cnt.append(np.zeros(self.num_nodes[i], dtype=int))
             for j in range(self.num_nodes[i]):
