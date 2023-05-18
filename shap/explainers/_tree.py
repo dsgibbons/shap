@@ -149,7 +149,7 @@ class Tree(Explainer):
         self.model = TreeEnsemble(model, self.data, self.data_missing, model_output)
         self.model_output = model_output
         #self.model_output = self.model.model_output # this allows the TreeEnsemble to translate model outputs types by how it loads the model
-        
+
         self.approximate = approximate
 
         if feature_perturbation not in feature_perturbation_codes:
@@ -338,7 +338,7 @@ class Tree(Explainer):
                                          "See https://github.com/slundberg/shap/issues/580") from e
 
                 if check_additivity and self.model.model_output == "raw":
-                    xgb_tree_limit = tree_limit // self.model.num_stacked_models 
+                    xgb_tree_limit = tree_limit // self.model.num_stacked_models
                     model_output_vals = self.model.original_model.predict(
                         X, ntree_limit=xgb_tree_limit, output_margin=True,
                         validate_features=False
@@ -841,7 +841,7 @@ class TreeEnsemble:
             # 'best_ntree_limit' is problematic
             # https://github.com/dmlc/xgboost/issues/6615
             if hasattr(model, 'best_iteration'):
-                trees_per_iteration = xgb_loader.num_class if xgb_loader.num_class > 0 else 1 
+                trees_per_iteration = xgb_loader.num_class if xgb_loader.num_class > 0 else 1
                 self.tree_limit = (getattr(model, "best_iteration", None) + 1) * trees_per_iteration
             else:
                 self.tree_limit = getattr(model, "best_ntree_limit", None)
@@ -1672,4 +1672,3 @@ class CatBoostTreeModelLoader:
                             }, data=data, data_missing=data_missing))
 
         return trees
-
