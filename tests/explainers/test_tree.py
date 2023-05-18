@@ -796,7 +796,7 @@ def test_provided_background_tree_path_dependent():
     xgboost = pytest.importorskip("xgboost")
     np.random.seed(10)
 
-    X, y = shap.datasets.iris(n_points=100)
+    X, y = shap.datasets.adult(n_points=100)
     dtrain = xgboost.DMatrix(X, label=y, feature_names=X.columns)
 
     params = {
