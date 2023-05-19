@@ -170,7 +170,6 @@ def test_single_feature():
 def test_sparse():
     """ Validate running LinearExplainer on scipy sparse data
     """
-    #from scipy.special import expit
     make_multilabel_classification = pytest.importorskip('sklearn.datasets').make_multilabel_classification
     LogisticRegression = pytest.importorskip('sklearn.linear_model').LogisticRegression
 

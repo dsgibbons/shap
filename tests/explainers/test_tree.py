@@ -155,11 +155,16 @@ def _validate_shap_values(model, x_test):
 def test_xgboost_ranking():
     xgboost = pytest.importorskip('xgboost')
 
-    # train lightgbm ranker model
+    # train xgboost ranker model
     x_train, y_train, x_test, _, q_train, _ = shap.datasets.rank()
-    params = {'objective': 'rank:pairwise', 'learning_rate': 0.1,
-              'gamma': 1.0, 'min_child_weight': 0.1,
-              'max_depth': 5, 'n_estimators': 4}
+    params = {
+        "objective": "rank:pairwise",
+        "learning_rate": 0.1,
+        "gamma": 1.0,
+        "min_child_weight": 0.1,
+        "max_depth": 5,
+        "n_estimators": 4,
+    }
     model = xgboost.sklearn.XGBRanker(**params)
     model.fit(x_train, y_train, q_train.astype(int))
     _validate_shap_values(model, x_test)
@@ -404,16 +409,11 @@ def test_catboost():
     predicted = model.predict(X)
 
     assert np.abs(shap_values.sum(1) + ex.expected_value - predicted).max() < 1e-4, \
-        "SHAP values don't sum to modThisel output!"
+        "SHAP values don't sum to model output!"
 
     X, y = sklearn.datasets.load_breast_cancer(return_X_y=True)
     model = catboost.CatBoostClassifier(iterations=10, learning_rate=0.5, random_seed=12)
-    model.fit(
-        X,
-        y,
-        verbose=False,
-        plot=False
-    )
+    model.fit(X, y, verbose=False, plot=False)
     ex = shap.TreeExplainer(model)
     shap_values = ex.shap_values(X)
 
@@ -446,11 +446,11 @@ def test_lightgbm_constant_prediction():
     # max_nodes = np.max([len(t.values) for t in self.trees])
     # The test does not fail with latest lightgbm 2.2.3 however
     lightgbm = pytest.importorskip("lightgbm")
+
     # train lightgbm model with a constant value for y
     X, y = shap.datasets.california(n_points=500)
     # use the mean for all values
-    mean = np.mean(y)
-    y.fill(mean)
+    y.fill(np.mean(y))
     model = lightgbm.sklearn.LGBMRegressor(n_estimators=1)
     model.fit(X, y)
 
@@ -625,7 +625,7 @@ def test_sum_match_gradient_boosting_classifier():
         "SHAP values don't sum to model output!"
 
     # check initial expected value
-    assert np.abs(initial_ex_value - ex.expected_value) < 1e-4, "Inital expected value is wrong!"
+    assert np.abs(initial_ex_value - ex.expected_value) < 1e-4, "Initial expected value is wrong!"
 
     # check SHAP interaction values
     shap_interaction_values = ex.shap_interaction_values(X_test.iloc[:10, :])
