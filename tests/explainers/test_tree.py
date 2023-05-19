@@ -827,7 +827,6 @@ def test_provided_background_independent():
         'max_depth': 4,
         'eta': 0.1,
         'nthread': -1,
-        'silent': 1
     }
 
     bst = xgboost.train(params=params, dtrain=dtrain, num_boost_round=100)
@@ -859,7 +858,6 @@ def test_provided_background_independent_prob_output():
             'max_depth': 4,
             'eta': 0.1,
             'nthread': -1,
-            'silent': 1
         }
 
         bst = xgboost.train(params=params, dtrain=dtrain, num_boost_round=100)
