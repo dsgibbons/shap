@@ -120,7 +120,6 @@ def run_setup(
 ):
     ext_modules = []
     if with_binary:
-        print(">>>>> WITH BINARY")
         compile_args = []
         if sys.platform == 'zos':
             compile_args.append('-qlonglong')
@@ -132,7 +131,6 @@ def run_setup(
                       include_dirs=[np.get_include()],
                       extra_compile_args=compile_args))
     if with_cuda:
-        print(">>>>> WITH CUDA")
         try:
             cuda_home, _ = get_cuda_path()
             if sys.platform == 'win32':
