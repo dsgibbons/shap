@@ -424,11 +424,7 @@ def test_catboost():
 
 def test_catboost_categorical():
     catboost = pytest.importorskip("catboost")
-    bunch = sklearn.datasets.fetch_california_housing()
-    X, y = sklearn.datasets.fetch_california_housing(return_X_y=True)
-    X = shap.utils.sample(X, 500)
-    y = shap.utils.sample(y, 500)
-    X = pd.DataFrame(X, columns=bunch.feature_names)  # pylint: disable=no-member
+    X, y = shap.datasets.california(n_points=500)
     X['IsOld'] = (X['HouseAge'] > 30).astype(str)
 
     model = catboost.CatBoostRegressor(100, cat_features=['IsOld'], verbose=False)
@@ -673,9 +669,7 @@ def test_HistGradientBoostingClassifier_proba():
 
 def test_HistGradientBoostingClassifier_multidim():
     # train a tree-based model
-    X, y = shap.datasets.adult()
-    X = X[:100]
-    y = y[:100]
+    X, y = shap.datasets.adult(n_points=100)
     y = np.random.randint(0, 3, len(y))
     model = sklearn.ensemble.HistGradientBoostingClassifier(max_iter=10, max_depth=6).fit(X, y)
     explainer = shap.TreeExplainer(model, shap.sample(X, 10), model_output="raw")
@@ -821,9 +815,7 @@ def test_provided_background_independent():
 
     np.random.seed(10)
 
-    X, y = shap.datasets.iris()
-    X = X[:100]
-    y = y[:100]
+    X, y = shap.datasets.iris(n_points=100)
     train_x, test_x, train_y, _ = sklearn.model_selection.train_test_split(X, y, random_state=1)
     feature_names = ["a", "b", "c", "d"]
     dtrain = xgboost.DMatrix(train_x, label=train_y, feature_names=feature_names)
@@ -854,9 +846,7 @@ def test_provided_background_independent_prob_output():
 
     np.random.seed(10)
 
-    X, y = shap.datasets.iris()
-    X = X[:100]
-    y = y[:100]
+    X, y = shap.datasets.iris(n_points=100)
     train_x, test_x, train_y, _ = sklearn.model_selection.train_test_split(X, y, random_state=1)
     feature_names = ["a", "b", "c", "d"]
     dtrain = xgboost.DMatrix(train_x, label=train_y, feature_names=feature_names)
