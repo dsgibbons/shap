@@ -34,9 +34,9 @@ jobs:
         uses: codecov/codecov-action@v3
 
   run_tests_core:
-    name: Unit tests (core only)
+    name: run_tests (core only)
     # Run tests with only the core dependencies, to ensure we
-    # cover the latest version of numpy/pandas
+    # cover the latest version of numpy/pandas. See #46
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
