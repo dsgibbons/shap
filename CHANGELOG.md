@@ -19,6 +19,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Fixed deprecation warnings from `Ipython.core.display` (#13).
 - Fixed deprecation warnings from `tensorflow` optimisers (#16).
 - Fixed deprecation warnings from `sklearn.linear_model` (#22).
+- Fixed `plot.waterfall` yticklabels with boolean features (#58).
 
 ### Changed
 
