@@ -13,7 +13,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Fixed
 
-- Fixed failing unit tests (#29).
+- Fixed failing unit tests (#29, #20, #24).
 - Fixed `plot.waterfall` yticklabels with boolean features (#58).
 - Fixed sampling in `shap.datasets` to sample without replacement (#36).
 - Fixed deprecation warnings for `numpy>=1.24` from numpy types  (#7).
