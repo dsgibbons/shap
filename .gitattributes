@@ -1,4 +1,4 @@
-# Ensure consitent treatment of line endings
+# Ensure consistent treatment of line endings
 * text=auto
 
 # Do not raise merge conflicts for multiple changelog edits
