@@ -16,10 +16,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Fixed failing unit tests (#29, #20, #24).
 - Fixed `plot.waterfall` yticklabels with boolean features (#58).
 - Fixed sampling in `shap.datasets` to sample without replacement (#36).
-- Fixed deprecation warnings for `numpy>=1.24` from numpy types  (#7).
-- Fixed deprecation warnings for `Ipython>=8` from `Ipython.core.display`  (#13).
+- Fixed deprecation warnings for `numpy>=1.24` from numpy types (#7).
+- Fixed deprecation warnings for `Ipython>=8` from `Ipython.core.display` (#13).
 - Fixed deprecation warnings for `tensorflow>=2.11` from `tf.optimisers` (#16).
-- Fixed deprecation warnings for `sklearn>=1.2` from `sklearn.linear_model`  (#22).
+- Fixed deprecation warnings for `sklearn>=1.2` from `sklearn.linear_model` (#22).
 - Fixed installation of package via setuptools (#51).
 
 ### Changed
