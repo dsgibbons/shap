@@ -1133,3 +1133,31 @@ class TestExplainerLightGBM:
             for k, kval in enumerate(jval):
                 for m, mval in enumerate(kval):
                     assert abs(mval - interaction_vals[j][m][k]) < 1e-4
+
+    def test_lightgbm_call_explanation(self):
+        """Checks that __call__ runs without error and returns a valid Explanation object.
+
+        Related to GH issue #66.
+        """
+        lightgbm = pytest.importorskip("lightgbm")
+
+        # NOTE: the categorical column is necessary for testing GH issue #66.
+        X, y = shap.datasets.adult(n_points=300)
+        X["categ"] = pd.Categorical(
+            [p for p in ("M", "F") for _ in range(150)],
+            ordered=False,
+        )
+        model = lightgbm.LGBMClassifier(n_estimators=7, n_jobs=1)
+        model.fit(X, y)
+
+        explainer = shap.TreeExplainer(model)
+        explanation = explainer(X)
+
+        shap_values_raw: list[np.ndarray] = explainer.shap_values(X)
+        shap_values: np.ndarray = np.stack(shap_values_raw, axis=-1)
+
+        # checks that the call returns a valid Explanation object
+        assert len(explanation.base_values) == len(y)
+        assert isinstance(explanation.values, np.ndarray)
+        assert isinstance(shap_values, np.ndarray)
+        assert (explanation.values == shap_values).all()
