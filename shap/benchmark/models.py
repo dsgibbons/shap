@@ -64,8 +64,8 @@ def corrgroups60__gbm():
 def corrgroups60__ffnn():
     """ 4-Layer Neural Network
     """
-    from keras.models import Sequential
-    from keras.layers import Dense
+    from tensorflow.keras.models import Sequential
+    from tensorflow.keras.layers import Dense
 
     model = Sequential()
     model.add(Dense(32, activation='relu', input_dim=60))
@@ -113,8 +113,8 @@ def independentlinear60__gbm():
 def independentlinear60__ffnn():
     """ 4-Layer Neural Network
     """
-    from keras.models import Sequential
-    from keras.layers import Dense
+    from tensorflow.keras.models import Sequential
+    from tensorflow.keras.layers import Dense
 
     model = Sequential()
     model.add(Dense(32, activation='relu', input_dim=60))
@@ -188,8 +188,8 @@ def cric__gbm():
 def cric__ffnn():
     """ 4-Layer Neural Network
     """
-    from keras.models import Sequential
-    from keras.layers import Dense, Dropout
+    from tensorflow.keras.models import Sequential
+    from tensorflow.keras.layers import Dense, Dropout
 
     model = Sequential()
     model.add(Dense(10, activation='relu', input_dim=336))
