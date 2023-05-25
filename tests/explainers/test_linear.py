@@ -35,7 +35,6 @@ def test_tied_pair_new():
     assert np.abs(explainer.shap_values(X) - np.array([0.5, 0.5, 0])).max() < 0.05
 
 def test_wrong_masker():
-    pytest.importorskip("cv2")
     with pytest.raises(NotImplementedError):
         shap.explainers.Linear((0, 0), shap.maskers.Fixed())
 
