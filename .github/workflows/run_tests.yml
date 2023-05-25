@@ -33,11 +33,12 @@ jobs:
           --cov=shap --cov-report=xml --cov-report=term-missing \
           --mpl-generate-summary=html --mpl-results-path=./mpl-results
       - name: Upload mpl test report
-        if: always()
+        if: failure()
         uses: actions/upload-artifact@v3
         with:
           name: mpl-results
           path: mpl-results/
+          if-no-files-found: ignore
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
 
@@ -58,4 +59,12 @@ jobs:
           pip install -e '.[test-core,plots]'
       - name: Test with pytest
         run: |
-          python -m pytest
+          python -m pytest \
+          --mpl-generate-summary=html --mpl-results-path=./mpl-results
+      - name: Upload mpl test report
+        if: failure()
+        uses: actions/upload-artifact@v3
+        with:
+          name: mpl-results
+          path: mpl-results/
+          if-no-files-found: ignore
