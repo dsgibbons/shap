@@ -814,7 +814,10 @@ def test_provided_background_independent():
 
     np.random.seed(10)
 
-    X, y = shap.datasets.iris(n_points=100)
+    X, y = shap.datasets.iris()
+    # Select the first 100 rows, so that the y values contain only 0s and 1s
+    X = X[:100]
+    y = y[:100]
     train_x, test_x, train_y, _ = sklearn.model_selection.train_test_split(X, y, random_state=1)
     feature_names = ["a", "b", "c", "d"]
     dtrain = xgboost.DMatrix(train_x, label=train_y, feature_names=feature_names)
