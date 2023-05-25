@@ -37,7 +37,7 @@ def test_tied_pair_new():
 def test_wrong_masker():
     pytest.importorskip("cv2")
     with pytest.raises(NotImplementedError):
-        shap.explainers.Linear((0, 0), shap.maskers.Image("blur(10,10)", (10, 10, 3)))
+        shap.explainers.Linear((0, 0), shap.maskers.Fixed())
 
 def test_tied_triple():
     np.random.seed(0)
