@@ -2,7 +2,13 @@
 
 This repository is a fork of Scott Lundberg's popular [shap](https://github.com/slundberg/shap) library. Unfortunately, the original shap repo is not currently maintained. This fork attempts to fix shap's current issues and merge old PRs. See the general discussion on the purpose of this repo [here](https://github.com/dsgibbons/shap/discussions/11).
 
-**New contributors are very welcome**, so please feel free to get involved!
+## What has changed on this fork?
+
+This fork primarily adds bug fixes and deprecation updates, to ensure that `shap` works with the latest versions of other libaries. Check out the [changelog](CHANGELOG.md) for full details of updates.
+
+## Contributing
+
+**New contributors are very welcome** so please feel free to get involved, for example by submitting PRs or opening issues!
 
 We are eager to build a broad pool of maintainers, to avoid having a single person responsible for the entire repostitory. This repo adopts a _liberal contribution governance model_, where project decisions are based on a consensus seeking process. For more information, see [here](https://medium.com/the-node-js-collection/healthy-open-source-967fa8be7951).
 
@@ -299,7 +305,7 @@ An implementation of Kernel SHAP, a model agnostic method to estimate SHAP value
 
 - [**Census income classification with scikit-learn**](https://slundberg.github.io/shap/notebooks/Census%20income%20classification%20with%20scikit-learn.html) - Using the standard adult census income dataset, this notebook trains a k-nearest neighbors classifier using scikit-learn and then explains predictions using `shap`.
 
-- [**ImageNet VGG16 Model with Keras**](https://slundberg.github.io/shap/notebooks/ImageNet%20VGG16%20Model%20with%20Keras.html) - Explain the classic VGG16 convolutional nerual network's predictions for an image. This works by applying the model agnostic Kernel SHAP method to a super-pixel segmented image.
+- [**ImageNet VGG16 Model with Keras**](https://slundberg.github.io/shap/notebooks/ImageNet%20VGG16%20Model%20with%20Keras.html) - Explain the classic VGG16 convolutional neural network's predictions for an image. This works by applying the model agnostic Kernel SHAP method to a super-pixel segmented image.
 
 - [**Iris classification**](https://slundberg.github.io/shap/notebooks/Iris%20classification%20with%20scikit-learn.html) - A basic demonstration using the popular iris species dataset. It explains predictions from six different models in scikit-learn using `shap`.
 

@@ -113,7 +113,8 @@ class Exact(Explainer):
             outputs = fm(extended_delta_indexes, zero_index=0, batch_size=batch_size)
 
             # Shapley values
-            if interactions is False or interactions == 1:
+            # Care: Need to distinguish between `True` and `1`
+            if interactions is False or (interactions == 1 and interactions is not True):
 
                 # loop over all the outputs to update the rows
                 coeff = shapley_coefficients(len(inds))
@@ -175,7 +176,7 @@ class Exact(Explainer):
             "clustering": getattr(self.masker, "clustering", None)
         }
 
-@jit
+@jit(nopython=False)
 def _compute_grey_code_row_values(row_values, mask, inds, outputs, shapley_coeff, extended_delta_indexes, noop_code):
     set_size = 0
     M = len(inds)
@@ -201,7 +202,7 @@ def _compute_grey_code_row_values(row_values, mask, inds, outputs, shapley_coeff
             else:
                 row_values[j] -= out * off_coeff
 
-@jit
+@jit(nopython=False)
 def _compute_grey_code_row_values_st(row_values, mask, inds, outputs, shapley_coeff, extended_delta_indexes, noop_code):
     set_size = 0
     M = len(inds)

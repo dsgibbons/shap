@@ -182,7 +182,7 @@ class Tabular(Masker):
             kwargs["clustering"] = s.load("clustering")
         return kwargs
 
-@jit
+@jit(nopython=False)
 def _single_delta_mask(dind, masked_inputs, last_mask, data, x, noop_code):
     if dind == noop_code:
         pass
@@ -193,7 +193,7 @@ def _single_delta_mask(dind, masked_inputs, last_mask, data, x, noop_code):
         masked_inputs[:, dind] = x[dind]
         last_mask[dind] = True
 
-@jit
+@jit(nopython=False)
 def _delta_masking(masks, x, curr_delta_inds, varying_rows_out,
                    masked_inputs_tmp, last_mask, data, variants, masked_inputs_out, noop_code):
     """ Implements the special (high speed) delta masking API that only flips the positions we need to.
@@ -265,7 +265,7 @@ class Independent(Tabular):
 class Partition(Tabular):
     """ This masks out tabular features by integrating over the given background dataset.
 
-    Unlike Independent, Partition respects a hierarchial structure of the data.
+    Unlike Independent, Partition respects a hierarchical structure of the data.
     """
 
     def __init__(self, data, max_samples=100, clustering="correlation"):
