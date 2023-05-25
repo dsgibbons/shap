@@ -113,7 +113,11 @@ class Exact(Explainer):
             outputs = fm(extended_delta_indexes, zero_index=0, batch_size=batch_size)
 
             # Shapley values
-            if interactions is False or interactions == 1:
+            def _integer_equal(x, number):
+                # Care: Need to distinguish between `True` and `1`
+                return x == number and not isinstance(x, bool)
+
+            if interactions is False or _integer_equal(interactions, 1):
 
                 # loop over all the outputs to update the rows
                 coeff = shapley_coefficients(len(inds))
@@ -122,7 +126,7 @@ class Exact(Explainer):
                 _compute_grey_code_row_values(row_values, mask, inds, outputs, coeff, extended_delta_indexes, MaskedModel.delta_mask_noop_value)
 
             # Shapley-Taylor interaction values
-            elif interactions is True or interactions == 2:
+            elif interactions is True or _integer_equal(interactions, 2):
 
                 # loop over all the outputs to update the rows
                 coeff = shapley_coefficients(len(inds))
