@@ -36,7 +36,7 @@ jobs:
         if: failure()
         uses: actions/upload-artifact@v3
         with:
-          name: mpl-results
+          name: mpl-results-${{ matrix.python-version }}
           path: mpl-results/
           if-no-files-found: ignore
       - name: Upload coverage to Codecov
@@ -65,6 +65,6 @@ jobs:
         if: failure()
         uses: actions/upload-artifact@v3
         with:
-          name: mpl-results
+          name: mpl-results-core
           path: mpl-results/
           if-no-files-found: ignore
