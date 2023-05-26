@@ -1131,8 +1131,8 @@ class TestExplainerLightGBM:
         interaction_vals = shap.TreeExplainer(model).shap_interaction_values(X)
         for j, jval in enumerate(interaction_vals):
             for k, kval in enumerate(jval):
-                for m, mval in enumerate(kval):
-                    assert abs(mval - interaction_vals[j][m][k]) < 1e-4
+                for m, _ in enumerate(kval):
+                    assert abs(interaction_vals[j][k][m] - interaction_vals[j][m][k]) < 1e-4
 
     def test_lightgbm_call_explanation(self):
         """Checks that __call__ runs without error and returns a valid Explanation object.
