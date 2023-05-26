@@ -58,7 +58,6 @@ def violin(shap_values, features=None, feature_names=None, max_display=None, plo
     # support passing an explanation object
     if str(type(shap_values)).endswith("Explanation'>"):
         shap_exp = shap_values
-        base_value = shap_exp.expected_value
         shap_values = shap_exp.values
         if features is None:
             features = shap_exp.data
@@ -169,7 +168,7 @@ def violin(shap_values, features=None, feature_names=None, max_display=None, plo
                 ds /= np.max(ds) * 3
 
                 values = features[:, i]
-                window_size = max(10, len(values) // 20)
+                # window_size = max(10, len(values) // 20)
                 smooth_values = np.zeros(len(xs) - 1)
                 sort_inds = np.argsort(shaps)
                 trailing_pos = 0
@@ -249,7 +248,7 @@ def violin(shap_values, features=None, feature_names=None, max_display=None, plo
             # order the feature data so we can apply percentiling
             order = np.argsort(feature)
             # x axis is located at y0 = pos, with pos being there for offset
-            y0 = np.ones(num_x_points) * pos
+            # y0 = np.ones(num_x_points) * pos
             # calculate kdes:
             ys = np.zeros((nbins, num_x_points))
             for i in range(nbins):
