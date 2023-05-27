@@ -1,12 +1,18 @@
 name: tests
 
 on:
+  # only run tests and coverage when src code changes
   push:
     branches:
-    - master
+      - master
   pull_request:
     branches:
-    - master
+      - master
+    paths:
+      - "shap/**"
+      - "tests/**"
+      - ".github/workflows/run_tests.yml"
+      - "setup.py"
 
 jobs:
   run_tests:
