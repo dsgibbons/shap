@@ -97,13 +97,10 @@ def violin(shap_values, features=None, feature_names=None, max_display=None, plo
         else:
             color = colors.blue_rgb
 
-    idx2cat = None
     # convert from a DataFrame or other types
     if str(type(features)) == "<class 'pandas.core.frame.DataFrame'>":
         if feature_names is None:
             feature_names = features.columns
-        # feature index to category flag
-        idx2cat = features.dtypes.astype(str).isin(["object", "category"]).tolist()
         features = features.values
     elif isinstance(features, list):
         if feature_names is None:
