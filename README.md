@@ -17,7 +17,7 @@ We are eager to build a broad pool of maintainers, to avoid having a single pers
 
 ## Installation
 
-This fork is not yet available on PyPI or conda. Our current goal is to merge the changes from this repository back into [slundberg/shap](https://github.com/slundberg/shap). If you would like to use this fork, the currently supported installation method is:
+This fork is not yet available on PyPI or conda. Our goal is to merge the changes from this fork back into [slundberg/shap](https://github.com/slundberg/shap). If you would like to use this fork, the currently supported installation method is:
 
 ```pip install git+https://github.com/dsgibbons/shap.git```
 
@@ -29,7 +29,7 @@ Read the documentation for this fork here: [https://shap-community.readthedocs.i
 
 <br>
 
-> **Warning**: From this point onward, README.md is copied from from [slundberg/shap](https://github.com/slundberg/shap). Assume that any links or installation instructions refer to the original project and not this fork.
+> **Warning**: From this point onward, README.md is copied from [slundberg/shap](https://github.com/slundberg/shap). Assume that any links or installation instructions refer to the original project and not this fork.
 
 <br>
 
