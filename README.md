@@ -27,7 +27,11 @@ If we are unable to merge our changes back into [slundberg/shap](https://github.
 
 Read the documentation for this fork here: [https://shap-community.readthedocs.io/en/latest/](https://shap-community.readthedocs.io/en/latest/)
 
-> :warning: **Note**: From this point onward, README.md is copied from from [slundberg/shap](https://github.com/slundberg/shap). Assume that any links or installation instructions refer to the original project and not this fork.
+<br>
+
+> **Warning**: From this point onward, README.md is copied from from [slundberg/shap](https://github.com/slundberg/shap). Assume that any links or installation instructions refer to the original project and not this fork.
+
+<br>
 
 # SHAP
 
