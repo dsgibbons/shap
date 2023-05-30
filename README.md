@@ -19,7 +19,9 @@ We are eager to build a broad pool of maintainers, to avoid having a single pers
 
 This fork is not yet available on PyPI or conda. Our goal is to merge the changes from this fork back into [slundberg/shap](https://github.com/slundberg/shap). If you would like to use this fork, the currently supported installation method is:
 
-```pip install git+https://github.com/dsgibbons/shap.git```
+```
+pip install git+https://github.com/dsgibbons/shap.git
+```
 
 If we are unable to merge our changes back into [slundberg/shap](https://github.com/slundberg/shap), we will create our own release on PyPI.
 
