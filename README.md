@@ -13,7 +13,7 @@ This fork primarily adds bug fixes and deprecation updates, to ensure that `shap
 
 **New contributors are very welcome** so please feel free to get involved, for example by submitting PRs or opening issues!
 
-We are eager to build a broad pool of maintainers, to avoid having a single person responsible for the entire repostitory. This repo adopts a _liberal contribution governance model_, where project decisions are based on a consensus seeking process. For more information, see [here](https://medium.com/the-node-js-collection/healthy-open-source-967fa8be7951).
+We are eager to build a broad pool of maintainers, to avoid having a single person responsible for the entire repository. This repo adopts a _liberal contribution governance model_, where project decisions are based on a consensus seeking process. For more information, see [here](https://medium.com/the-node-js-collection/healthy-open-source-967fa8be7951).
 
 ## Installation
 
