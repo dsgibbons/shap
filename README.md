@@ -1,5 +1,8 @@
 # SHAP Community Fork
 
+![example workflow](https://github.com/dsgibbons/shap/actions/workflows/run_tests.yml/badge.svg)
+[![Documentation Status](https://readthedocs.org/projects/shap-community/badge/?version=latest)](https://shap-community.readthedocs.io/en/latest/?badge=latest)
+
 This repository is a fork of Scott Lundberg's popular [shap](https://github.com/slundberg/shap) library. Unfortunately, the original shap repo is not currently maintained. This fork attempts to fix shap's current issues and merge old PRs. See the general discussion on the purpose of this repo [here](https://github.com/dsgibbons/shap/discussions/11).
 
 ## What has changed on this fork?
@@ -10,7 +13,27 @@ This fork primarily adds bug fixes and deprecation updates, to ensure that `shap
 
 **New contributors are very welcome** so please feel free to get involved, for example by submitting PRs or opening issues!
 
-We are eager to build a broad pool of maintainers, to avoid having a single person responsible for the entire repostitory. This repo adopts a _liberal contribution governance model_, where project decisions are based on a consensus seeking process. For more information, see [here](https://medium.com/the-node-js-collection/healthy-open-source-967fa8be7951).
+We are eager to build a broad pool of maintainers, to avoid having a single person responsible for the entire repository. This repo adopts a _liberal contribution governance model_, where project decisions are based on a consensus seeking process. For more information, see [here](https://medium.com/the-node-js-collection/healthy-open-source-967fa8be7951).
+
+## Installation
+
+This fork is not yet available on PyPI or conda. Our goal is to merge the changes from this fork back into [slundberg/shap](https://github.com/slundberg/shap). If you would like to use this fork, the currently supported installation method is:
+
+```
+pip install git+https://github.com/dsgibbons/shap.git
+```
+
+If we are unable to merge our changes back into [slundberg/shap](https://github.com/slundberg/shap), we will create our own release on PyPI.
+
+## Documentation
+
+Read the documentation for this fork here: [https://shap-community.readthedocs.io/en/latest/](https://shap-community.readthedocs.io/en/latest/)
+
+<br>
+
+> **Warning**: From this point onward, README.md is copied from [slundberg/shap](https://github.com/slundberg/shap). Assume that any links or installation instructions refer to the original project and not this fork.
+
+<br>
 
 # SHAP
 
@@ -19,9 +42,6 @@ We are eager to build a broad pool of maintainers, to avoid having a single pers
 </p>
 
 ---
-![example workflow](https://github.com/slundberg/shap/actions/workflows/run_tests.yml/badge.svg)
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/slundberg/shap/master)
-[![Documentation Status](https://readthedocs.org/projects/shap/badge/?version=latest)](https://shap.readthedocs.io/en/latest/?badge=latest)
 
 **SHAP (SHapley Additive exPlanations)** is a game theoretic approach to explain the output of any machine learning model. It connects optimal credit allocation with local explanations using the classic Shapley values from game theory and their related extensions (see [papers](#citations) for details and citations).
 

@@ -12,7 +12,6 @@ select = ["F"]
 # For now, deselect rules that do not pass
 ignore = [
   "F811", # Redefinition of unused variable
-  "F821", # Undefined name
   "F841", # Local variables assigned but unused
 ]
 
