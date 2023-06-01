@@ -34,23 +34,27 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python-version }}
-          cache: pip
-          cache-dependency-path: setup.py
-      - name: debug cache size
+      - name: debug python size (fresh)
         run: |
-          pip cache dir
-          pip cache dir | xargs du -sh || echo failed
+          ls -lah ${{ env.pythonLocation }}
+          du ${{ env.pythonLocation }} || echo failed
+      - name: Cache python installation
+        uses: actions/cache@v3
+        with:
+          path: ${{ env.pythonLocation }}
+          key: ${{ runner.os }}-${{ steps.setup-python.outputs.python-version }}-${{ env.pythonLocation }}-${{ hashFiles('setup.py') }}-0
+      - name: debug python size (after cache restore)
+        run: |
+          ls -lah ${{ env.pythonLocation }}
+          du ${{ env.pythonLocation }} || echo failed
       - name: Install dependencies
         run: |
-          pip cache dir
-          pip cache dir | xargs du -sh  || echo failed
           python -m pip install --upgrade pip
-          pip cache dir | xargs du -sh  || echo failed
           pip install --upgrade --upgrade-strategy eager -e '.[test,plots]'
-      - name: debug cache size
+      - name: debug python size (after install)
         run: |
-          pip cache dir
-          pip cache dir | xargs du -sh || echo failed
+          ls -lah ${{ env.pythonLocation }}
+          du ${{ env.pythonLocation }} || echo failed
       - name: Test with pytest
         run: |
           # Fewer tests, for speedy testing
