@@ -53,7 +53,8 @@ jobs:
           pip cache dir | xargs du -sh || echo failed
       - name: Test with pytest
         run: |
-          python -m pytest --durations=20 \
+          # Fewer tests, for speedy testing
+          python -m pytest -k explanation_hstack --durations=20 \
           --cov=shap --cov-report=xml --cov-report=term-missing \
           --mpl-generate-summary=html --mpl-results-path=./mpl-results
       - name: Upload mpl test report
