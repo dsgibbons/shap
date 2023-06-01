@@ -37,7 +37,7 @@ jobs:
       - name: debug python size (fresh)
         run: |
           ls -lah ${{ env.pythonLocation }}
-          du ${{ env.pythonLocation }} || echo failed
+          du -sh ${{ env.pythonLocation }} || echo failed
       - name: Cache python installation
         uses: actions/cache@v3
         with:
@@ -46,7 +46,7 @@ jobs:
       - name: debug python size (after cache restore)
         run: |
           ls -lah ${{ env.pythonLocation }}
-          du ${{ env.pythonLocation }} || echo failed
+          du -sh ${{ env.pythonLocation }} || echo failed
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
@@ -54,7 +54,7 @@ jobs:
       - name: debug python size (after install)
         run: |
           ls -lah ${{ env.pythonLocation }}
-          du ${{ env.pythonLocation }} || echo failed
+          du -sh ${{ env.pythonLocation }} || echo failed
       - name: Test with pytest
         run: |
           # Fewer tests, for speedy testing
