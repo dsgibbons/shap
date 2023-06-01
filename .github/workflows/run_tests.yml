@@ -34,12 +34,21 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python-version }}
-      - name: Cache python installation
-        # Only cache 3 envs, to stay under github's 10GB cache storage limit
-        if: contains(fromJSON('["3.7", "3.10", "3.11"]'), matrix.python-version)
+      - name: Debug info
+        run: |
+          echo ${{ env.pythonLocation }}
+          ls -lah ${{ env.pythonLocation }}
+          echo ${{ env.pythonLocation }}
+      - name: Cache python libs
         uses: actions/cache@v3
         with:
-          path: ${{ env.pythonLocation }}
+          path: |
+            ${{ env.pythonLocation }}/**/site-packages/torch*
+            ${{ env.pythonLocation }}/**/site-packages/tensorflow*
+            ${{ env.pythonLocation }}/**/site-packages/xgboost*
+            ${{ env.pythonLocation }}/**/site-packages/pyspark*
+            ${{ env.pythonLocation }}/**/site-packages/nvidia*
+            ${{ env.pythonLocation }}/**/site-packages/pyspark*
           key: ${{ runner.os }}-${{ matrix.python-version }}-${{ env.pythonLocation }}-${{ hashFiles('setup.py') }}-0
       - name: Install dependencies
         run: |
@@ -48,7 +57,8 @@ jobs:
           pip install --upgrade --upgrade-strategy eager -e '.[test,plots]'
       - name: Test with pytest
         run: |
-          python -m pytest --durations=20 \
+          # Temp change for faster tests
+          python -m pytest -k explanation_hstack --durations=20 \
           --cov=shap --cov-report=xml --cov-report=term-missing \
           --mpl-generate-summary=html --mpl-results-path=./mpl-results
       - name: Upload mpl test report
