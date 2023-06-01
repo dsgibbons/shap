@@ -38,7 +38,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: |
-            # Select libraries that have slowest build time (s) for smallest storage cost (MB)
+            # Only cache a subset of libraries, ensuring cache size remains under 10GB. See #42
             ${{ env.pythonLocation }}/**/site-packages/pyspark*
             ${{ env.pythonLocation }}/**/site-packages/nvidia*
             ${{ env.pythonLocation }}/**/site-packages/torch*
@@ -52,8 +52,7 @@ jobs:
           pip install --upgrade --upgrade-strategy eager -e '.[test,plots]'
       - name: Test with pytest
         run: |
-          # Temp change for faster tests
-          python -m pytest -k explanation_hstack --durations=20 \
+          python -m pytest --durations=20 \
           --cov=shap --cov-report=xml --cov-report=term-missing \
           --mpl-generate-summary=html --mpl-results-path=./mpl-results
       - name: Upload mpl test report
