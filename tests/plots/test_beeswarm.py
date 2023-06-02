@@ -1,3 +1,4 @@
+import matplotlib.pyplot as plt
 import numpy as np
 import pytest
 
@@ -42,3 +43,15 @@ def test_beeswarm_wrong_features_shape():
             data=rs.randn(20, 1),
         )
         shap.plots.beeswarm(expln, show=False)
+
+
+@pytest.mark.mpl_image_compare
+def test_simple_beeswarm(explainer):
+    """Check a beeswarm chart renders correctly with shap_values as an Explanation
+    object (default settings).
+    """
+    fig = plt.figure()
+    shap_values = explainer(explainer.data)
+    shap.plots.beeswarm(shap_values)
+    plt.tight_layout()
+    return fig
