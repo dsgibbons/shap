@@ -114,14 +114,9 @@ utils
     shap.utils.delta_minimization_order
     shap.utils.approximate_interactions
     shap.utils.potential_interactions
-    shap.utils.safe_isinstance
-    shap.utils.assert_import
-    shap.utils.record_import_error
     shap.utils.sample
     shap.utils.shapley_coefficients
     shap.utils.convert_name
-    shap.utils.format_value
-    shap.utils.ordinal_str
     shap.utils.OpChain
     shap.utils.show_progress
     shap.utils.MaskedModel
