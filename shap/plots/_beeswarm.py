@@ -44,7 +44,11 @@ def beeswarm(shap_values, max_display=10, order=Explanation.abs.mean(0),
     """
 
     if not isinstance(shap_values, Explanation):
-        raise ValueError("the beeswarm plot requires Explanation object as the `shap_values` argument")
+        emsg = (
+            "The beeswarm plot requires an `Explanation` object as the "
+            "`shap_values` argument."
+        )
+        raise TypeError(emsg)
 
     if len(shap_values.shape) == 1:
         raise ValueError(

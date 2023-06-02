@@ -5,6 +5,16 @@ import shap
 from shap.utils._exceptions import DimensionError
 
 
+def test_beeswarm_input_is_explanation():
+    """Checks an error is raised if a non-Explanation object is passed as input.
+    """
+    with pytest.raises(
+        TypeError,
+        match="beeswarm plot requires an `Explanation` object",
+    ):
+        _ = shap.plots.beeswarm(np.random.randn(20, 5), show=False)
+
+
 def test_beeswarm_wrong_features_shape():
     """Checks that DimensionError is raised if the features data matrix
     has an incompatible shape with the shap_values matrix.
