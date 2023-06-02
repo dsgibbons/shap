@@ -5,8 +5,6 @@
 # or to provide custom queries or build logic.
 #
 
-# Nb. template has been edited to specify the desired list of languages.
-
 name: "CodeQL"
 
 on:
@@ -17,12 +15,15 @@ on:
     branches: [ "master" ]
     paths:
       - "shap/**"
-      - "javascripts/**"
+      - "javascript/**"
       - "tests/**"
       - "data/**"
       - ".github/workflows/codeql-analysis.yml"
       - "**.py"
       - "**.js"
+      - "**.cc"
+      - "**.cu"
+      - "**.h"
   schedule:
     - cron: '16 9 * * 1'
 
